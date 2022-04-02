@@ -1,0 +1,27 @@
+syntax = "proto3";
+option java_package = "com.makarov09.grpc";
+service user {
+  //define an api
+  rpc userRegister (RegisterRequestMsg) returns(APIResponseMsg);
+  rpc login(LoginRequestMsg) returns(APIResponseMsg);
+  rpc logout(EmptyMsg) returns(APIResponseMsg);
+}
+
+message RegisterRequestMsg {
+  string userName = 1;
+  string password = 2;
+}
+
+message LoginRequestMsg {
+  string userName = 1; //for grpc internal purposes
+  string password = 2;
+}
+
+message APIResponseMsg {
+  string responseMessage = 1;
+  int32 responseCode = 2;
+}
+
+message EmptyMsg {
+
+}
